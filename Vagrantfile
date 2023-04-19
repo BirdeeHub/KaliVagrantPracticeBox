@@ -116,6 +116,7 @@ git clone https://github.com/danielmiessler/SecLists.git /home/vagrant/SecLists.
 git clone https://github.com/int0x33/nc.exe.git /home/vagrant/nc.exe.git
 git clone https://github.com/fortra/impacket.git /home/vagrant/impacket.git
 git clone https://github.com/carlospolop/PEASS-ng.git /home/vagrant/PEASS-ng.git
+git clone https://github.com/BlackArch/webshells.git /home/vagrant/webshells.git
 
 # if you need other linpeas and dont want to compile you can edit this command
 wget -O /home/vagrant/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
