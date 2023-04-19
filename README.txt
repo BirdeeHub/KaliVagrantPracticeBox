@@ -33,4 +33,5 @@ My only contribution is writing a few batch files, a vagrantfile that provisions
 Git clone, click a batch file (or make a new tab in windows terminal that runs the .HeadlessKaliStart.bat from the correct starting directory)
 Then thats it! Once it provisions you will have everything you need to start practicing!
 
-This is more or less a list of all the non SIEM programs that I have gotten a decent amount of use for so far in the pentesting category of activities
+This is more or less a list of all the non SIEM programs that I have gotten a decent amount of use for 
+so far in the pentesting category of activities that arent already in kali
