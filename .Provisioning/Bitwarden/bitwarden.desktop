@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Name=bitwarden
+GenericName=Password Manager
+Icon=/vagrant/.Provisioning/Bitwarden/BitWardenIcon.png
+Exec=/usr/bin/bitwardenGUI.AppImage
+Terminal=false
+Categories=Security;System
+Keywords=Bitwarden;Crypto;Passwords;Security
+StartupWMClass=bitwarden

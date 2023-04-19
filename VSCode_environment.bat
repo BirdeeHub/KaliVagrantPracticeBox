@@ -1,0 +1,1 @@
+.Provisioning\CopyOVPN.bat & .Provisioning\CopySSH.bat & start "" "%userprofile%\AppData\Local\Programs\Microsoft VS Code\Code.exe" . C:\Windows\System32\drivers\etc\hosts
