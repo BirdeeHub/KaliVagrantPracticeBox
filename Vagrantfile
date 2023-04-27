@@ -51,6 +51,23 @@ echo
 echo Running Provisioning Script...
 apt update
 apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr -y;
+apt install nuclei --fix-missing
+
+echo
+echo Installing go
+wget -O go.tar.gz https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
+tar -C /usr/local/ -xzf go.tar.gz
+rm go.tar.gz
+echo "export GOPATH=/root/go-workspace" >> /home/vagrant/.zshrc
+echo "export GOROOT=/usr/local/go >> /home/vagrant/.zshrc
+echo "PATH=$PATH:$GOROOT/bin/:$GOPATH/bin >> /home/vagrant/.zshrc
+
+echo
+echo Installing Zap...
+echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/home:cabelo.list
+curl -fsSL https://download.opensuse.org/repositories/home:cabelo/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cabelo.gpg > /dev/null
+sudo apt update
+sudo apt install owasp-zap
 
 echo
 echo Installing docker...
@@ -85,17 +102,18 @@ chmod 775 /usr/bin/bitwardenGUI
 chmod 775 /usr/bin/bitwardenGUI.AppImage
 
 echo
-echo Copying Misc Scripts...
+echo Copying Scripts from .Provisioning...
 cp /vagrant/.Provisioning/ssh/sshTHM.sh /home/vagrant/
 chown vagrant:vagrant /home/vagrant/sshTHM.sh
 chmod 775 /home/vagrant/sshTHM.sh
 tar xzvvf /vagrant/.Provisioning/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
+cp /vagrant/.Provisioning/intrigue_docker.sh /home/vagrant/
 
 echo
 echo Running apt upgrade...
-apt upgrade -y
+#apt upgrade -y
 
 echo
 echo Running apt autoclean...
@@ -112,20 +130,49 @@ $github_script = <<-SCRIPT
 
 echo
 echo Cloning Various GitHub Repositories...
-git clone https://github.com/danielmiessler/SecLists.git /home/vagrant/SecLists.git
-git clone https://github.com/int0x33/nc.exe.git /home/vagrant/nc.exe.git
-git clone https://github.com/fortra/impacket.git /home/vagrant/impacket.git
-git clone https://github.com/carlospolop/PEASS-ng.git /home/vagrant/PEASS-ng.git
-git clone https://github.com/BlackArch/webshells.git /home/vagrant/webshells.git
+[ ! -d "/home/vagrant/git_repos" ] && mkdir /home/vagrant/git_repos
+git clone https://github.com/danielmiessler/SecLists.git /home/vagrant/git_repos/SecLists.git
+git clone https://github.com/int0x33/nc.exe.git /home/vagrant/git_repos/nc.exe.git
+git clone https://github.com/fortra/impacket.git /home/vagrant/git_repos/impacket.git
+git clone https://github.com/carlospolop/PEASS-ng.git /home/vagrant/git_repos/PEASS-ng.git
+git clone https://github.com/BlackArch/webshells.git /home/vagrant/git_repos/webshells.git
+git clone https://github.com/danielmiessler/Source2URL.git /home/vagrant/git_repos/Source2URL.git
+git clone https://github.com/0xDexter0us/Scavenger.git /home/vagrant/git_repos/Scavenger.git
+git clone https://github.com/michael1026/trashcompactor.git /home/vagrant/git_repos/trashcompactor.git
+git clone https://github.com/xnl-h4ck3r/waymore.git /home/vagrant/git_repos/waymore.git
+git clone https://github.com/xnl-h4ck3r/xnLinkFinder.git /home/vagrant/git_repos/xnLinkFinder.git
+git clone https://github.com/xnl-h4ck3r/GAP-Burp-Extension.git /home/vagrant/git_repos/GAP-Burp-Extension.git
+git clone https://github.com/xnl-h4ck3r/urless.git /home/vagrant/git_repos/urless.git
+git clone https://github.com/xnl-h4ck3r/HandE-Burp-Extension.git /home/vagrant/git_repos/HandE-Burp-Extension.git
+git clone https://github.com/xnl-h4ck3r/knoxnl.git /home/vagrant/git_repos/knoxnl.git
+git clone https://github.com/dwisiswant0/apkleaks.git /home/vagrant/git_repos/apkleaks.git
+git clone https://github.com/dgtlmoon/changedetection.io.git /home/vagrant/git_repos/changedetection.io.git
+git clone https://github.com/jaeles-project/gospider.git /home/vagrant/git_repos/gospider.git
+git clone https://github.com/LewisArdern/metasecjs.git /home/vagrant/git_repos/metasecjs.git
+git clone https://github.com/1ndianl33t/Gf-Patterns.git /home/vagrant/git_repos/Gf-Patterns.git
+git clone https://github.com/projectdiscovery/subfinder.git /home/vagrant/git_repos/subfinder.git
+git clone https://github.com/vysecurity/DomLink.git /home/vagrant/git_repos/DomLink.git
+git clone https://github.com/assetnote/commonspeak2.git /home/vagrant/git_repos/commonspeak2.git
+git clone https://github.com/assetnote/commonspeak2-wordlists.git /home/vagrant/git_repos/commonspeak2-wordlists.git
+git clone https://github.com/assetnote/kiterunner.git /home/vagrant/git_repos/kiterunner.git
+git clone https://github.com/projectdiscovery/alterx.git /home/vagrant/git_repos/alterx.git
+git clone https://github.com/FortyNorthSecurity/EyeWitness.git /home/vagrant/git_repos/EyeWitness.git
+git clone https://github.com/clr2of8/GatherContacts.git /home/vagrant/git_repos/GatherContacts.git
+git clone https://github.com/tomnomnom/waybackurls.git /home/vagrant/git_repos/waybackurls.git
+git clone https://github.com/daudmalik06/ReconCat.git /home/vagrant/git_repos/ReconCat.git
+git clone https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration.git /home/vagrant/git_repos/bugcrowd-levelup-subdomain-enumeration.git
+git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Scanners-Box.git
+git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per.git
+.//home/vagrant/git_repos/Sn1per.git/install.sh
 
 # if you need other linpeas and dont want to compile you can edit this command
-wget -O /home/vagrant/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
+wget -O /home/vagrant/git_repos/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
 
 SCRIPT
 $alias_script = <<-SCRIPT
 echo
 echo Adding Aliases to .zshrc file...
-echo "alias gobuckets='gobuster vhost -w ~/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain -u '" >> /home/vagrant/.zshrc
+echo "alias gobuckets='gobuster vhost -w ~/git_repos/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain -u '" >> /home/vagrant/.zshrc
 echo
 echo running source on .zshrc file...
 source /home/vagrant/.zshrc
@@ -159,12 +206,12 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
     v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
 # DVWA
-    v.customize ["modifyvm", :id, "--nat-pf1", "DVWA,tcp,127.0.0.1,10000,,10000"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "DVWA,tcp,127.0.0.1,10000,,10000"]
 # beef
-    v.customize ["modifyvm", :id, "--nat-pf1", "beef1,tcp,127.0.0.1,3000,,3000"]
-    v.customize ["modifyvm", :id, "--nat-pf1", "beef2,tcp,127.0.0.1,6789,,6789"]
-    v.customize ["modifyvm", :id, "--nat-pf1", "beef3,tcp,127.0.0.1,61985,,61985"]
-    v.customize ["modifyvm", :id, "--nat-pf1", "beef4,tcp,127.0.0.1,61986,,61986"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "beef1,tcp,127.0.0.1,3000,,3000"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "beef2,tcp,127.0.0.1,6789,,6789"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "beef3,tcp,127.0.0.1,61985,,61985"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "beef4,tcp,127.0.0.1,61986,,61986"]
 
 # Mutillidae
     #v.customize ["modifyvm", :id, "--nat-pf1", "Mutillidae1,tcp,127.0.0.1,1000,,1000"]
