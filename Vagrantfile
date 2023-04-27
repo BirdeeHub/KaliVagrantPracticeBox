@@ -50,6 +50,7 @@ $script = <<-SCRIPT
 echo
 echo Running Provisioning Script...
 apt update
+apt install -y kali-linux-large
 apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr -y;
 apt install nuclei --fix-missing
 
@@ -62,12 +63,12 @@ echo "export GOPATH=/root/go-workspace" >> /home/vagrant/.zshrc
 echo "export GOROOT=/usr/local/go" >> /home/vagrant/.zshrc
 echo "PATH=$PATH:$GOROOT/bin/:$GOPATH/bin" >> /home/vagrant/.zshrc
 
-echo
-echo Installing Zap...
-echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/home:cabelo.list
-curl -fsSL https://download.opensuse.org/repositories/home:cabelo/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cabelo.gpg > /dev/null
-sudo apt update
-sudo apt install owasp-zap
+#echo
+#echo Installing Zap...
+#echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/home:cabelo.list
+#curl -fsSL https://download.opensuse.org/repositories/home:cabelo/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cabelo.gpg > /dev/null
+#sudo apt update
+#sudo apt install owasp-zap
 
 echo
 echo Installing docker...
