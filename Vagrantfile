@@ -59,8 +59,8 @@ wget -O go.tar.gz https://go.dev/dl/go1.20.3.linux-amd64.tar.gz
 tar -C /usr/local/ -xzf go.tar.gz
 rm go.tar.gz
 echo "export GOPATH=/root/go-workspace" >> /home/vagrant/.zshrc
-echo "export GOROOT=/usr/local/go >> /home/vagrant/.zshrc
-echo "PATH=$PATH:$GOROOT/bin/:$GOPATH/bin >> /home/vagrant/.zshrc
+echo "export GOROOT=/usr/local/go" >> /home/vagrant/.zshrc
+echo "PATH=$PATH:$GOROOT/bin/:$GOPATH/bin" >> /home/vagrant/.zshrc
 
 echo
 echo Installing Zap...
