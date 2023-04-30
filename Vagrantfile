@@ -171,7 +171,7 @@ git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repo
 && mvn package -f /home/vagrant/git_repos/rogue-jndi
 
 # if you need other linpeas and dont want to compile you can edit this command
-wget -O /home/vagrant/git_repos/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
+wget -O /home/vagrant/git_repos/PEASS-ng/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
 
 chown vagrant:vagrant -R /home/vagrant/*
 SCRIPT
@@ -182,6 +182,7 @@ echo "alias gobuckets='gobuster vhost -w ~/git_repos/SecLists/Discovery/DNS/subd
 
 SCRIPT
 $testing_script = <<-SCRIPT
+sudo apt update
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
 /home/vagrant/git_repos/Sn1per/install.sh force #IT STILL PROMPTS AAAHHHHHH
 SCRIPT
@@ -201,7 +202,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $script
   config.vm.provision "shell", inline: $github_script
   config.vm.provision "shell", inline: $alias_script
-  config.vm.provision "shell", inline: $testing_script
+  #config.vm.provision "shell", inline: $testing_script
   #define new port to prevent host collision with other vagrant vms
   config.ssh.guest_port = "2202"
   config.vm.provider 'virtualbox' do |v|
