@@ -105,14 +105,12 @@ chmod 775 /usr/bin/bitwardenGUI.AppImage
 echo
 echo Copying Scripts from .Provisioning...
 cp /vagrant/.Provisioning/ssh/sshTHM.sh /home/vagrant/
-chown vagrant:vagrant /home/vagrant/sshTHM.sh
 chmod 775 /home/vagrant/sshTHM.sh
 tar xzvvf /vagrant/.Provisioning/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
 cp /vagrant/.Provisioning/intrigue_docker.sh /home/vagrant/
 cp /vagrant/.Provisioning/copy_firefox.sh /home/vagrant/
-chown vagrant:vagrant /home/vagrant/tools_misc /home/vagrant/rockyou.txt /home/vagrant/intrigue_docker.sh /home/vagrant/docker-compose.yml /home/vagrant/copy_firefox.sh
 
 echo
 echo Running apt upgrade...
@@ -173,7 +171,7 @@ mvn package -f /home/vagrant/git_repos/rogue-jndi
 # if you need other linpeas and dont want to compile you can edit this command
 wget -O /home/vagrant/git_repos/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
 
-chown vagrant:vagrant /home/vagrant/git_repos /home/vagrant/git_repos/*
+chown vagrant:vagrant -R /home/vagrant/*
 SCRIPT
 $alias_script = <<-SCRIPT
 echo
