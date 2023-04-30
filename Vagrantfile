@@ -64,7 +64,7 @@ echo "export GOROOT=/usr/local/go" >> /home/vagrant/.zshrc
 echo "PATH=$PATH:$GOROOT/bin/:$GOPATH/bin" >> /home/vagrant/.zshrc
 
 #echo
-#echo Installing Zap...
+#echo Installing Zap... nevermind its in kali-linux-large
 #echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_Testing/ /' | sudo tee /etc/apt/sources.list.d/home:cabelo.list
 #curl -fsSL https://download.opensuse.org/repositories/home:cabelo/Debian_Testing/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cabelo.gpg > /dev/null
 #sudo apt update
@@ -114,6 +114,7 @@ cp /vagrant/.Provisioning/copy_firefox.sh /home/vagrant/
 
 echo
 echo Running apt upgrade...
+#omg it takes so long
 #apt upgrade -y
 
 echo
@@ -122,7 +123,7 @@ apt autoclean
 SCRIPT
 $github_script = <<-SCRIPT
 #echo
-#echo Installing GithubCLI...
+#echo Installing GithubCLI... not that necessary...
 #curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
 #&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
 #&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
