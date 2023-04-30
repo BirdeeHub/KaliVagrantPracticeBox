@@ -166,8 +166,6 @@ git clone https://github.com/danielmiessler/RobotsDisallowed.git /home/vagrant/g
 git clone https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration.git /home/vagrant/git_repos/bugcrowd-levelup-subdomain-enumeration
 git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Scanners-Box
 git clone https://github.com/dionach/CMSmap.git /home/vagrant/git_repos/CMSmap
-git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
-#/home/vagrant/git_repos/Sn1per/install.sh force #IT STILL PROMPTS AAAHHHHHH
 git clone https://github.com/puzzlepeaches/Log4jUnifi /home/vagrant/git_repos/Log4jUnifi
 git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi \
 && mvn package -f /home/vagrant/git_repos/rogue-jndi
@@ -182,6 +180,10 @@ echo
 echo Adding Aliases to .zshrc file...
 echo "alias gobuckets='gobuster vhost -w ~/git_repos/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain -u '" >> /home/vagrant/.zshrc
 
+SCRIPT
+$testing_script = <<-SCRIPT
+git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
+/home/vagrant/git_repos/Sn1per/install.sh force #IT STILL PROMPTS AAAHHHHHH
 SCRIPT
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
@@ -199,6 +201,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $script
   config.vm.provision "shell", inline: $github_script
   config.vm.provision "shell", inline: $alias_script
+  config.vm.provision "shell", inline: $testing_script
   #define new port to prevent host collision with other vagrant vms
   config.ssh.guest_port = "2202"
   config.vm.provider 'virtualbox' do |v|
