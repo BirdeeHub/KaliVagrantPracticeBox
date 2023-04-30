@@ -168,8 +168,7 @@ git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Sca
 git clone https://github.com/dionach/CMSmap.git /home/vagrant/git_repos/CMSmap
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
 ./home/vagrant/git_repos/Sn1per/install.sh
-git clone https://github.com/puzzlepeaches/Log4jUnifi /home/vagrant/git_repos/Log4jUnifi \
-&& pip3 install -r /home/vagrant/git_repos/Log4jUnifi/requirements.txt
+git clone https://github.com/puzzlepeaches/Log4jUnifi /home/vagrant/git_repos/Log4jUnifi
 git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi \
 && mvn package -f /home/vagrant/git_repos/rogue-jndi
 
