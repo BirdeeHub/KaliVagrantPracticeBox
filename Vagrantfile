@@ -51,7 +51,7 @@ echo
 echo Running Provisioning Script...
 apt update
 apt install -y kali-linux-large
-apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven-y;
+apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven -y;
 apt install nuclei --fix-missing
 
 echo
@@ -161,13 +161,17 @@ git clone https://github.com/FortyNorthSecurity/EyeWitness.git /home/vagrant/git
 git clone https://github.com/clr2of8/GatherContacts.git /home/vagrant/git_repos/GatherContacts
 git clone https://github.com/tomnomnom/waybackurls.git /home/vagrant/git_repos/waybackurls
 git clone https://github.com/daudmalik06/ReconCat.git /home/vagrant/git_repos/ReconCat
+git clone https://github.com/maurosoria/dirsearch.git /home/vagrant/git_repos/dirsearch
+git clone https://github.com/danielmiessler/RobotsDisallowed.git /home/vagrant/git_repos/RobotsDisallowed
 git clone https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration.git /home/vagrant/git_repos/bugcrowd-levelup-subdomain-enumeration
 git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Scanners-Box
 git clone https://github.com/dionach/CMSmap.git /home/vagrant/git_repos/CMSmap
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
 ./home/vagrant/git_repos/Sn1per/install.sh
-git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi
-mvn package -f /home/vagrant/git_repos/rogue-jndi
+git clone https://github.com/puzzlepeaches/Log4jUnifi /home/vagrant/git_repos/Log4jUnifi \
+&& pip3 install -r /home/vagrant/git_repos/Log4jUnifi/requirements.txt
+git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi \
+&& mvn package -f /home/vagrant/git_repos/rogue-jndi
 
 # if you need other linpeas and dont want to compile you can edit this command
 wget -O /home/vagrant/git_repos/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
