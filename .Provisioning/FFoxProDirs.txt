@@ -1,0 +1,6 @@
+bookmarkbackups
+browser-extension-data
+extension-store
+extensions
+settings
+storage

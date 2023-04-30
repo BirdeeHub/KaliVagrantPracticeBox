@@ -51,7 +51,7 @@ echo
 echo Running Provisioning Script...
 apt update
 apt install -y kali-linux-large
-apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr -y;
+apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven-y;
 apt install nuclei --fix-missing
 
 echo
@@ -111,6 +111,7 @@ tar xzvvf /vagrant/.Provisioning/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
 cp /vagrant/.Provisioning/intrigue_docker.sh /home/vagrant/
+cp /vagrant/.Provisioning/copy_firefox.sh /home/vagrant/
 
 echo
 echo Running apt upgrade...
@@ -165,6 +166,8 @@ git clone https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration.git
 git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Scanners-Box.git
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per.git
 .//home/vagrant/git_repos/Sn1per.git/install.sh
+git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi
+mvn package -f /home/vagrant/git_repos/rogue-jndi
 
 # if you need other linpeas and dont want to compile you can edit this command
 wget -O /home/vagrant/git_repos/PEASS-ng.git/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
@@ -174,9 +177,7 @@ $alias_script = <<-SCRIPT
 echo
 echo Adding Aliases to .zshrc file...
 echo "alias gobuckets='gobuster vhost -w ~/git_repos/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain -u '" >> /home/vagrant/.zshrc
-echo
-echo running source on .zshrc file...
-source /home/vagrant/.zshrc
+
 SCRIPT
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.

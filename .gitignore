@@ -1,5 +1,6 @@
 notes/*
 .Provisioning/ssh/id_*
 .Provisioning/OVPN/*
+.Provisioning/firefox/*
 .vagrant/
 adapter_addresses.txt

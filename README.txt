@@ -3,8 +3,17 @@ Requirements: Vagrant and VirtualBox
 
 
 **ATTENTION**
-NEEDS TO BE PLACED IN HOME FOLDER FOR CopyOVPN.bat AND CopySSH.bat TO FUNCTION PROPERLY 
-(and by extension, VSCode_environment.bat will also not work as it calls these 2 scripts)
+The relevant config files must be in their default locations for 
+CopyOVPN.bat AND CopySSH.bat AND CopyFireFox.bat to function properly.
+(and by extension, VSCode_environment.bat will also not work as it calls these 3 scripts)
+these scripts need path edits to be run individually. The intention is for you to use 
+VSCode_environment.bat to run all 3 and open VSCode.
+
+You can put this repository wherever you want though.
+
+In order to copy firefox configuration, it requires you to open firefox in the vm,
+and then close it again, and then run the script /home/vagrant/copy_firefox.sh
+This is because you need a profile to copy the settings to.
 **/ATTENTION**
 
 vm start in gui and headless done through the .bat files in .vm_ctl
