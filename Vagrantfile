@@ -116,7 +116,7 @@ SCRIPT
 $aptupgrade = <<-SCRIPT
 echo
 echo Running apt upgrade...
-#omg it takes so long
+#echo OMG it takes so long...
 apt upgrade -y
 SCRIPT
 $github_script = <<-SCRIPT
