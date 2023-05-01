@@ -219,7 +219,7 @@ Vagrant.configure("2") do |config|
 
     #set name
     v.name = "birdeeKali"
-    # SSH - now dealt with above, and the rest below. ssh rule here preserved for posterity
+    # SSH - now dealt with above, and the rest below. ssh rule here preserved for reference.
     #v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
     #v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
   end
