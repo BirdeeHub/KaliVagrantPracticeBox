@@ -46,7 +46,7 @@ then
 fi
 
 SCRIPT
-$script = <<-SCRIPT
+$main_provision_script = <<-SCRIPT
 echo
 echo Running Provisioning Script...
 apt update
@@ -112,14 +112,12 @@ cp /usr/share/wordlists/rockyou.txt /home/vagrant/
 cp /vagrant/.Provisioning/intrigue_docker.sh /home/vagrant/
 cp /vagrant/.Provisioning/copy_firefox.sh /home/vagrant/
 
+SCRIPT
+$aptupgrade = <<-SCRIPT
 echo
 echo Running apt upgrade...
 #omg it takes so long
 apt upgrade -y
-
-echo
-echo Running apt autoclean...
-apt autoclean
 SCRIPT
 $github_script = <<-SCRIPT
 #echo
@@ -186,6 +184,11 @@ sudo apt update
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
 /home/vagrant/git_repos/Sn1per/install.sh force #IT STILL PROMPTS AAAHHHHHH
 SCRIPT
+$autoclean = <<-SCRIPT
+echo
+echo Running apt autoclean...
+apt autoclean
+SCRIPT
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -199,12 +202,16 @@ Vagrant.configure("2") do |config|
   #run the above provisioning scripts
   config.vm.provision "shell", inline: $new_ssh_key_script
   config.vm.provision "shell", inline: $always_run_script, run: "always"
-  config.vm.provision "shell", inline: $script
+  config.vm.provision "shell", inline: $main_provision_script
+  config.vm.provision "shell", inline: $aptupgrade #running upgrade before github pulls can help with install scripts that check dependency version. but it takes a long time so i separated it for easy comment-out.
   config.vm.provision "shell", inline: $github_script
   config.vm.provision "shell", inline: $alias_script
-  #config.vm.provision "shell", inline: $testing_script
+  config.vm.provision "shell", inline: $testing_script
+  config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
+
   #define new port to prevent host collision with other vagrant vms
   config.ssh.guest_port = "2202"
+  config.vm.network "forwarded_port", guest: 22, host: 2202, host_ip: "127.0.0.1", id: "ssh"
   config.vm.provider 'virtualbox' do |v|
     v.gui = false
     #set RAM
@@ -212,54 +219,26 @@ Vagrant.configure("2") do |config|
 
     #set name
     v.name = "birdeeKali"
-# SSH
-    v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
-    v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
-# DVWA
-    #v.customize ["modifyvm", :id, "--nat-pf1", "DVWA,tcp,127.0.0.1,10000,,10000"]
-# beef
-    #v.customize ["modifyvm", :id, "--nat-pf1", "beef1,tcp,127.0.0.1,3000,,3000"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "beef2,tcp,127.0.0.1,6789,,6789"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "beef3,tcp,127.0.0.1,61985,,61985"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "beef4,tcp,127.0.0.1,61986,,61986"]
-
-# Mutillidae
-    #v.customize ["modifyvm", :id, "--nat-pf1", "Mutillidae1,tcp,127.0.0.1,1000,,1000"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "Mutillidae2,tcp,127.0.0.1,20002,,20002"]
-
-# bwapp:
-    #v.customize ["modifyvm", :id, "--nat-pf1", "bwapp,tcp,127.0.0.1,10011,,10011"]
-
-# shellshock
-# image: cyberxsecurity/shellshock:latest
-    #v.customize ["modifyvm", :id, "--nat-pf1", "shellshock11and21,tcp,127.0.0.1,10007,,10007"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "shellshock12,tcp,127.0.0.1,20007,,20007"]
-
-# bricks
-    #v.customize ["modifyvm", :id, "--nat-pf1", "bricks,tcp,127.0.0.1,10006,,10006"]
-
-# webgoatwolf
-    #v.customize ["modifyvm", :id, "--nat-pf1", "webgoatwolf1,tcp,127.0.0.1,10003,,10003"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "webgoatwolf2,tcp,127.0.0.1,10004,,10004"]
-
-# hackazon
-    #v.customize ["modifyvm", :id, "--nat-pf1", "hackazon,tcp,127.0.0.1,10001,,10001"]
-
-# heartbleed
-    #v.customize ["modifyvm", :id, "--nat-pf1", "heartbleed,tcp,127.0.0.1,10009,,10009"]
-
-# shellshock
-# image: hmlio/vaas-cve-2014-6271
-    #has same port forward rule as the 1st rule of 1st shellshock vm
-    #v.customize ["modifyvm", :id, "--nat-pf1", "shellshock21,tcp,127.0.0.1,10007,,10007"]
-
-# webgoat-dn:
-    #v.customize ["modifyvm", :id, "--nat-pf1", "webgoat-dn,tcp,127.0.0.1,10013,,10013"]
-
-# bodgeit:
-    #v.customize ["modifyvm", :id, "--nat-pf1", "bodgeit,tcp,127.0.0.1,10012,,10012"]
-
-# juiceshop:
-    #v.customize ["modifyvm", :id, "--nat-pf1", "juiceshop,tcp,127.0.0.1,10005,,10005"]
+    # SSH - now dealt with above, and the rest below. ssh rule here preserved for posterity
+    #v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
   end
+  #config.vm.network "forwarded_port", guest: 80, host: 10000, host_ip: "127.0.0.1", name: "DVWA"
+  #config.vm.network "forwarded_port", guest: 3000, host: 3000, host_ip: "127.0.0.1", name: "beef1"
+  #config.vm.network "forwarded_port", guest: 6789, host: 6789, host_ip: "127.0.0.1", name: "beef2"
+  #config.vm.network "forwarded_port", guest: 61985, host: 61985, host_ip: "127.0.0.1", name: "beef3"
+  #config.vm.network "forwarded_port", guest: 61986, host: 61986, host_ip: "127.0.0.1", name: "beef4"
+  #config.vm.network "forwarded_port", guest: 80, host: 10001, host_ip: "127.0.0.1", name: "hackazon"
+  #config.vm.network "forwarded_port", guest: 80, host: 10003, host_ip: "127.0.0.1", name: "webgoatwolf1"
+  #config.vm.network "forwarded_port", guest: 80, host: 10004, host_ip: "127.0.0.1", name: "webgoatwolf2"
+  #config.vm.network "forwarded_port", guest: 80, host: 10005, host_ip: "127.0.0.1", name: "juiceshop"
+  #config.vm.network "forwarded_port", guest: 80, host: 10006, host_ip: "127.0.0.1", name: "bricks"
+  #config.vm.network "forwarded_port", guest: 80, host: 10011, host_ip: "127.0.0.1", name: "bwapp"
+  #config.vm.network "forwarded_port", guest: 80, host: 10012, host_ip: "127.0.0.1", name: "bodgeit"
+  #config.vm.network "forwarded_port", guest: 80, host: 10013, host_ip: "127.0.0.1", name: "webgoat-dn"
+  #config.vm.network "forwarded_port", guest: 80, host: 1000, host_ip: "127.0.0.1", name: "Mutillidae1"
+  #config.vm.network "forwarded_port", guest: 80, host: 20002, host_ip: "127.0.0.1", name: "Mutillidae2"
+  #config.vm.network "forwarded_port", guest: 80, host: 10007, host_ip: "127.0.0.1", name: "shellshock11and21"
+  #config.vm.network "forwarded_port", guest: 80, host: 20007, host_ip: "127.0.0.1", name: "shellshock12"
+  #config.vm.network "forwarded_port", guest: 80, host: 10009, host_ip: "127.0.0.1", name: "heartbleed"
 end
