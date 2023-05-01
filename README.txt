@@ -9,6 +9,7 @@ are not easily accessible from the outside internet as host communication
 uses specific port forwarding over loopback interface, but if an entity
 is able to gain control of the box, with a shared folder and default password it 
 would be extremely easy to gain access to the host. Changing the password only slightly helps with this.
+Although it does help so you should definitely change the password.
 You would need to remove the vagrant provisioning key from authorized_keys, remove shared folders, 
 set up firewalls and/or antivirus solution, make sure nothing is running with SUID root that 
 doesnt need it, set password and lockout policies, make it so the provisioning scripts no longer run as root, 

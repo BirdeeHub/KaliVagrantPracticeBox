@@ -45,9 +45,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $fix_home_folder_ownership
   
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\7alias_script.sh"
-  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh"
+  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh" #this one still prompts you. hit enter. it sucks i know.
   
   config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
+  #comment it out if it breaks stuff. It probably wont though.
 
   #define new port to prevent host collision with other vagrant vms
   config.ssh.guest_port = "2202"
