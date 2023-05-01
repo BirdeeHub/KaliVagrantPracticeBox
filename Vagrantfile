@@ -36,8 +36,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\always_run_script.sh", run: "always"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\main_provision_script.sh"
   
-  config.vm.provision "shell", inline: $aptupgrade #running upgrade before github pulls can help with  
+  #config.vm.provision "shell", inline: $aptupgrade #running upgrade before github pulls can help with  
   #install scripts that check dependency version. But it takes a long time so i separated it for easy comment-out.
+  #it also can make it bug sometimes. Its usually best to leave it disabled.
+
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\github_script.sh"
   
   config.vm.provision "shell", inline: $fix_home_folder_ownership
