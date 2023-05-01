@@ -23,7 +23,8 @@ where it calls the provisioning scripts.
 **/ATTENTION**
 
 vm start in gui and headless done through the .bat files in .vm_ctl
-headless start batch file runs vagrant up (if not running) and ssh (over 127.0.0.1:2202)
+headless start batch file runs vagrant up (if not running) and ssh (over 127.0.0.1:2202) 
+(headless start batch file can be added to windows terminal tabs, remember to set starting directory to repository root directory)
 gui start runs vagrant up (if not running) and then: start "" "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" startvm birdeeKali --type separate
 
 shortcuts already made in .vm_ctl/KaliVMStart/
