@@ -8,8 +8,13 @@ this box is for practice purposes. the contained practice images
 are not easily accessible from the outside internet as host communication 
 uses specific port forwarding over loopback interface, but if an entity
 is able to gain control of the box, with a shared folder and default password it 
-would be extremely easy to gain access to the host. 
-Changing the password only slightly helps with this.
+would be extremely easy to gain access to the host. Changing the password only slightly helps with this.
+You would need to remove the vagrant provisioning key from authorized_keys, remove shared folders, 
+set up firewalls and/or antivirus solution, make sure nothing is running with SUID root that 
+doesnt need it, set password and lockout policies, make it so the provisioning scripts no longer run as root, 
+and much more. 
+The ssh key change in particular would break vagrant up provisioning unless i wanted to package this as its own box.
+You also would absolutely not want to expose DVWA to the general internet obviously.
 
 You can put this repository wherever you want, but the relevant config files 
 for openvpn and .ssh and firefox must be in their default windows locations for 
