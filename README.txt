@@ -3,6 +3,14 @@ Requirements: Vagrant and VirtualBox
 
 
 **ATTENTION**
+THIS BOX IS NOT ITSELF SECURE
+this box is for practice purposes. the contained practice images 
+are not easily accessible from the outside internet as host communication 
+uses specific port forwarding over loopback interface, but if an entity
+is able to gain control of the box, with a shared folder and default password it 
+would be extremely easy to gain access to the host. 
+Changing the password only slightly helps with this.
+
 You can put this repository wherever you want, but the relevant config files 
 for openvpn and .ssh and firefox must be in their default windows locations for 
 CopyOVPN.bat AND CopySSH.bat AND CopyFireFox.bat to function properly.
