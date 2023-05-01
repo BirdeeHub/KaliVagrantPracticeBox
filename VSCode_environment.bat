@@ -1,1 +1,1 @@
-.Provisioning\CopyOVPN.bat & .Provisioning\CopySSH.bat & .Provisioning\CopyFireFox.bat & start "" "%userprofile%\AppData\Local\Programs\Microsoft VS Code\Code.exe" . C:\Windows\System32\drivers\etc\hosts
+.Provisioning\setup_host_env\CopyOVPN.bat & .Provisioning\setup_host_env\CopySSH.bat & .Provisioning\setup_host_env\CopyFireFox.bat & start "" "%userprofile%\AppData\Local\Programs\Microsoft VS Code\Code.exe" . C:\Windows\System32\drivers\etc\hosts

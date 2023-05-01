@@ -58,8 +58,8 @@ echo
 echo Copying Scripts from .Provisioning...
 cp /vagrant/.Provisioning/ssh/sshTHM.sh /home/vagrant/
 chmod 775 /home/vagrant/sshTHM.sh
-tar xzvvf /vagrant/.Provisioning/tools_misc.tar.gz -C /home/vagrant/
+tar xzvvf /vagrant/.Provisioning/misc_copy/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
-cp /vagrant/.Provisioning/intrigue_docker.sh /home/vagrant/
-cp /vagrant/.Provisioning/copy_firefox.sh /home/vagrant/
+cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/
+cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/
