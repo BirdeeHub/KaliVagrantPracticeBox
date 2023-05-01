@@ -34,12 +34,16 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\new_ssh_key_script.sh"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\always_run_script.sh", run: "always"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\main_provision_script.sh"
+  
   config.vm.provision "shell", inline: $aptupgrade #running upgrade before github pulls can help with  
   #install scripts that check dependency version. But it takes a long time so i separated it for easy comment-out.
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\github_script.sh"
+  
   config.vm.provision "shell", inline: $fix_home_folder_ownership
+  
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\alias_script.sh"
   #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\testing_script.sh"
+  
   config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
 
   #define new port to prevent host collision with other vagrant vms
