@@ -21,7 +21,6 @@ echo Running apt autoclean...
 apt autoclean
 SCRIPT
 Vagrant.configure("2") do |config|
-  # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
