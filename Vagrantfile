@@ -13,6 +13,8 @@ echo Running apt upgrade...
 apt upgrade -y
 SCRIPT
 $fix_home_folder_ownership = <<-SCRIPT
+echo
+echo changing ownership of home files
 chown vagrant:vagrant -R /home/vagrant/*
 SCRIPT
 $autoclean = <<-SCRIPT
