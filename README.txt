@@ -39,7 +39,7 @@ then:
 cd ~; docker-compose up;
 note: the different shellshock containers have the same port forward rule, but one of them only needs 1 of the rules turned on.
 
-VSCode_environment runs the batch files CopyOVPN.bat and CopySSH.bat from the .Provisioning\setup_host_env\ folder, 
+VSCode_environment runs the batch files stored in the .Provisioning\setup_host_env\ folder, 
 which will copy your current ssh public key, and openvpn config files to the .Provisioning folder.
 it will also open VSCode for this repository, as well as the host file so that you can edit it easily while doing hack the box
 
