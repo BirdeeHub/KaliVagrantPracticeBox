@@ -18,6 +18,8 @@ This is because you need a profile to copy the settings to.
 For Mac and Linux hosts:
 You will need to edit the batch files to be bash scripts 
 and replace paths with correct paths to use them on linux or mac hosts.
+They are all much easier to write in bash because you can actually 
+set a variable to the output of a piped command without a loop.
 You will also need to change \\ to / in the vagranfile
 where it calls the provisioning scripts.
 **/ATTENTION**
