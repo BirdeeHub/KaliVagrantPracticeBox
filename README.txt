@@ -3,17 +3,23 @@ Requirements: Vagrant and VirtualBox
 
 
 **ATTENTION**
-The relevant config files must be in their default locations for 
+You can put this repository wherever you want, but the relevant config files 
+for openvpn and .ssh and firefox must be in their default windows locations for 
 CopyOVPN.bat AND CopySSH.bat AND CopyFireFox.bat to function properly.
 (and by extension, VSCode_environment.bat will also not work as it calls these 3 scripts)
-these scripts need path edits to be run individually. The intention is for you to use 
+these scriptswill not run on their own without path edits. 
+The intention is for you to use 
 VSCode_environment.bat to run all 3 and open VSCode.
 
-You can put this repository wherever you want though.
-
 In order to copy firefox configuration, it requires you to open firefox in the vm,
-and then close it again, and then run the script /home/vagrant/copy_firefox.sh
+and then close it again, and then run the script /home/vagrant/copy_firefox.sh.
 This is because you need a profile to copy the settings to.
+
+For Mac and Linux hosts:
+You will need to edit the batch files to be bash scripts 
+and replace paths with correct paths to use them on linux or mac hosts.
+You will also need to change \\ to / in the vagranfile
+where it calls the provisioning scripts.
 **/ATTENTION**
 
 vm start in gui and headless done through the .bat files in .vm_ctl
@@ -28,11 +34,11 @@ Simply uncomment
 (and uncomment associated port forwarding rule(assuming you want to access the from your host browser ever, such as when running from headless mode)),
 then:
 cd ~; docker-compose up;
-note: the different shellshock containers have the same port forward rule, so be careful with that.
+note: the different shellshock containers have the same port forward rule, but one of them only needs 1 of the rules turned on.
 
-VSCode_environment runs the batch files CopyOVPN.bat and CopySSH.bat from the .Provisioning folder, 
+VSCode_environment runs the batch files CopyOVPN.bat and CopySSH.bat from the .Provisioning\setup_host_env\ folder, 
 which will copy your current ssh public key, and openvpn config files to the .Provisioning folder.
-it will also open VSCode for this directory, as well as the host file so that you can edit it while doing hack the box
+it will also open VSCode for this repository, as well as the host file so that you can edit it easily while doing hack the box
 
 This box is for practicing ethical hacking skills on various different platforms. 
 I own nothing in this repository. 
