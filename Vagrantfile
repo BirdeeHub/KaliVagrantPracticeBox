@@ -31,7 +31,22 @@ Vagrant.configure("2") do |config|
   config.vm.box = "kalilinux/rolling"
   #set name in vagrant
   config.vm.define "birdeeKali"
-  #run the above provisioning scripts
+  #define new port to prevent host collision with other vagrant vms
+  config.ssh.guest_port = "2202"
+  config.vm.network "forwarded_port", guest: 22, host: 2202, host_ip: "127.0.0.1", id: "ssh"
+  config.vm.provider 'virtualbox' do |v|
+    v.gui = false
+    #set RAM
+    v.memory = "4096"
+
+    #set name
+    v.name = "birdeeKali"
+    #old provider specific ssh rule here preserved for reference on how to pass commands to VBoxmanage.
+    #v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
+    #v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
+  end
+  
+  #run the provisioning scripts
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\1new_ssh_key_script.sh"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\2always_run_script.sh", run: "always"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\3main_provision_script.sh"
@@ -45,26 +60,12 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $fix_home_folder_ownership
   
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\7alias_script.sh"
-  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh" #this one still prompts you. hit enter. it sucks i know.
+  config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh" #this one still prompts you. hit enter. it sucks i know.
   
-  config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
+  #config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
   #comment it out if it breaks stuff. It probably wont though.
 
-  #define new port to prevent host collision with other vagrant vms
-  config.ssh.guest_port = "2202"
-  config.vm.network "forwarded_port", guest: 22, host: 2202, host_ip: "127.0.0.1", id: "ssh"
-  config.vm.provider 'virtualbox' do |v|
-    v.gui = false
-    #set RAM
-    v.memory = "4096"
 
-    #set name
-    v.name = "birdeeKali"
-    # SSH - now dealt with above, and the rest below. 
-    # provider specific ssh rule here preserved for reference. on how to pass commands to VBoxmanage.
-    #v.customize ["modifyvm", :id, "--nat-pf1", "delete", "ssh"]
-    #v.customize ["modifyvm", :id, "--nat-pf1", "SSH,tcp,127.0.0.1,2202,,22"]
-  end
   #config.vm.network "forwarded_port", guest: 80, host: 10000, host_ip: "127.0.0.1", name: "DVWA"
   #config.vm.network "forwarded_port", guest: 3000, host: 3000, host_ip: "127.0.0.1", name: "beef1"
   #config.vm.network "forwarded_port", guest: 6789, host: 6789, host_ip: "127.0.0.1", name: "beef2"
