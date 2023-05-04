@@ -13,6 +13,7 @@ echo Cloning Various GitHub Repositories...
 git clone https://github.com/int0x33/nc.exe.git /home/vagrant/git_repos/nc.exe
 git clone https://github.com/fortra/impacket.git /home/vagrant/git_repos/impacket
 git clone https://github.com/carlospolop/PEASS-ng.git /home/vagrant/git_repos/PEASS-ng
+git clone https://github.com/DominicBreuker/pspy.git /home/vagrant/git_repos/pspy
 git clone https://github.com/BlackArch/webshells.git /home/vagrant/git_repos/webshells
 git clone https://github.com/danielmiessler/Source2URL.git /home/vagrant/git_repos/Source2URL
 git clone https://github.com/0xDexter0us/Scavenger.git /home/vagrant/git_repos/Scavenger
@@ -44,6 +45,7 @@ git clone https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration.git
 git clone https://github.com/We5ter/Scanners-Box.git /home/vagrant/git_repos/Scanners-Box
 git clone https://github.com/dionach/CMSmap.git /home/vagrant/git_repos/CMSmap
 git clone https://github.com/puzzlepeaches/Log4jUnifi /home/vagrant/git_repos/Log4jUnifi
+git clone https://github.com/eversinc33/JailWhale.git /home/vagrant/git_repos/JailWhale
 git clone https://github.com/1N3/Sn1per.git /home/vagrant/git_repos/Sn1per
 git clone https://github.com/veracode-research/rogue-jndi /home/vagrant/git_repos/rogue-jndi \
 && mvn package -f /home/vagrant/git_repos/rogue-jndi
