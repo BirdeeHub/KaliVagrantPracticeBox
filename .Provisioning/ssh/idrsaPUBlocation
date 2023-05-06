@@ -1,0 +1,1 @@
+VSCode_environment.bat will send your id_rsa.pub from ~/.ssh/ to here to allow passwordless access via ssh.

@@ -56,8 +56,6 @@ chmod 775 /usr/bin/bitwardenGUI.AppImage
 
 echo
 echo Copying Scripts from .Provisioning...
-cp /vagrant/.Provisioning/ssh/sshTHM.sh /home/vagrant/
-chmod 775 /home/vagrant/sshTHM.sh
 tar xzvvf /vagrant/.Provisioning/misc_copy/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
