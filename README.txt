@@ -62,7 +62,7 @@ I own nothing in this repository.
 It is entirely a combination of various practice tools and materials that I have found and used.
 My only contribution is writing a few batch files, a vagrantfile that provisions everything, and collecting everything in one place.
 
-Git clone, click a batch file (or make a new tab in windows terminal that runs the .HeadlessKaliStart.bat from the correct starting directory)
+Git clone, click a batch file in .vm_ctl/ (or make a new tab in windows terminal that runs .vm_ctl/HeadlessKaliStart.bat from the correct starting directory)
 Then thats it! Once it provisions you will have everything you need to start practicing!
 
 This is more or less a list of all the non SIEM programs that I have gotten a decent amount of use for 
