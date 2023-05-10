@@ -59,7 +59,7 @@ echo Copying Scripts from .Provisioning...
 tar xzvvf /vagrant/.Provisioning/misc_copy/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/
-cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/
-cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/
+cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
+cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
 wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/download/v1.5.2/cdk_darwin_amd64
