@@ -12,7 +12,7 @@ echo Running apt upgrade...
 #echo OMG it takes so long...
 apt upgrade -y
 SCRIPT
-$fix_home_folder_ownership = <<-SCRIPT
+$fix_folder_ownership = <<-SCRIPT
 echo
 echo changing ownership of home files...
 chown vagrant:vagrant -R /home/vagrant/*
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\5github_script.sh"
   
-  config.vm.provision "shell", inline: $fix_home_folder_ownership
+  config.vm.provision "shell", inline: $fix_folder_ownership
   
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\7alias_script.sh"
   #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh" #this one still prompts you. hit enter. it sucks i know.
