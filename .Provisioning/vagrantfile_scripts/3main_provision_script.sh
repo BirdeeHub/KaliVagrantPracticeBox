@@ -56,10 +56,12 @@ chmod 775 /usr/bin/bitwardenGUI.AppImage
 
 echo
 echo Copying Scripts from .Provisioning...
+[ ! -d "/home/vagrant/misc_copy" ] && mkdir /home/vagrant/misc_copy
 tar xzvvf /vagrant/.Provisioning/misc_copy/tools_misc.tar.gz -C /home/vagrant/
 gunzip /usr/share/wordlists/rockyou.txt.gz
-cp /usr/share/wordlists/rockyou.txt /home/vagrant/
+cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
 wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/download/v1.5.2/cdk_darwin_amd64
+wget -O /home/vagrant/misc_copy/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
