@@ -10,7 +10,6 @@
 echo
 echo Cloning Various GitHub Repositories...
 [ ! -d "/home/vagrant/git_repos" ] && mkdir /home/vagrant/git_repos
-git clone https://github.com/novnc/noVNC.git /home/vagrant/git_repos/noVNC
 git clone https://github.com/int0x33/nc.exe.git /home/vagrant/git_repos/nc.exe
 git clone https://github.com/fortra/impacket.git /home/vagrant/git_repos/impacket
 git clone https://github.com/carlospolop/PEASS-ng.git /home/vagrant/git_repos/PEASS-ng

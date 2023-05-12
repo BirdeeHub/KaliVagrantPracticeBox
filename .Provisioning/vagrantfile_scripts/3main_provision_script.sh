@@ -5,7 +5,7 @@ apt update
 apt install -y kali-linux-large
 apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven -y;
 apt install nuclei --fix-missing
-apt install -y novnc tigervnc*
+apt install -y novnc tigervnc* kali-desktop-i3
 
 echo
 echo Installing go
@@ -63,7 +63,14 @@ gunzip /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
-cp /vagrant/.Provisioning/misc_copy/startnovnc.sh /home/vagrant/misc_copy/
+
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
 wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/download/v1.5.2/cdk_darwin_amd64
 wget -O /home/vagrant/misc_copy/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
+
+[ ! -d "/home/vagrant/vnc" ] && mkdir /home/vagrant/vnc
+cp /vagrant/.Provisioning/vnc/startnovnc.sh /home/vagrant/vnc
+cp /vagrant/.Provisioning/vnc/startnoi3.sh /home/vagrant/vnc
+cp /vagrant/.Provisioning/vnc/BurpFox.sh /home/vagrant/vnc
+cp /vagrant/.Provisioning/vnc/BurpSuiteVNC.sh /home/vagrant/vnc
+cp /vagrant/.Provisioning/vnc/FireFoxVNC.sh /home/vagrant/vnc
