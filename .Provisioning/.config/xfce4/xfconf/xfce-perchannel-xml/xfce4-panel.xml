@@ -10,19 +10,18 @@
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="34"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="11"/>
-        <value type="int" value="2"/>
         <value type="int" value="1"/>
         <value type="int" value="6"/>
         <value type="int" value="3"/>
         <value type="int" value="7"/>
-        <value type="int" value="13"/>
-        <value type="int" value="14"/>
-        <value type="int" value="15"/>
         <value type="int" value="16"/>
+        <value type="int" value="15"/>
+        <value type="int" value="14"/>
         <value type="int" value="17"/>
+        <value type="int" value="13"/>
+        <value type="int" value="11"/>
       </property>
-      <property name="mode" type="uint" value="2"/>
+      <property name="mode" type="uint" value="0"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="autohide-behavior" type="uint" value="1"/>
       <property name="enter-opacity" type="uint" value="100"/>
@@ -31,7 +30,6 @@
   </property>
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu"/>
-    <property name="plugin-2" type="string" value="separator"/>
     <property name="plugin-6" type="string" value="launcher">
       <property name="items" type="array">
         <value type="string" value="16839348742.desktop"/>
@@ -60,6 +58,9 @@
       <property name="size-max" type="uint" value="22"/>
       <property name="square-icons" type="bool" value="true"/>
       <property name="symbolic-icons" type="bool" value="false"/>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="networkmanager applet"/>
+      </property>
     </property>
     <property name="plugin-15" type="string" value="genmon"/>
     <property name="plugin-16" type="string" value="pulseaudio">

@@ -5,7 +5,7 @@ apt update
 apt install -y kali-linux-large
 apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven -y;
 apt install nuclei --fix-missing
-apt install -y novnc tigervnc* kali-desktop-i3
+apt install -y novnc tigervnc* kali-desktop-i3 xfce4-terminal
 
 echo
 echo Installing go
@@ -79,11 +79,6 @@ cp -r /vagrant/.Provisioning/vnc/* /home/vagrant/vnc/
 [ ! -d "/home/vagrant/.config" ] && mkdir /home/vagrant/.config
 [ -d "/home/vagrant/.config/i3" ] && rm -r /home/vagrant/.config/i3
 cp -r /vagrant/.Provisioning/.config/i3 /home/vagrant/.config/
-[ -d "/home/vagrant/.config/Thunar" ] && rm -r /home/vagrant/.config/Thunar
-cp -r /vagrant/.Provisioning/.config/Thunar /home/vagrant/.config/
 [ -d "/home/vagrant/.config/xfce4" ] && rm -r /home/vagrant/.config/xfce4
 cp -r /vagrant/.Provisioning/.config/xfce4 /home/vagrant/.config/
-[ -d "/home/vagrant/.config/user-dirs.dirs" ] && rm -r /home/vagrant/.config/user-dirs.dirs
-cp -r /vagrant/.Provisioning/.config/user-dirs.dirs /home/vagrant/.config/
-[ -d "/home/vagrant/.config/user-dirs.locale" ] && rm -r /home/vagrant/.config/user-dirs.locale
-cp -r /vagrant/.Provisioning/.config/user-dirs.locale /home/vagrant/.config/
+
