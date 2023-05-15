@@ -69,8 +69,21 @@ wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/dow
 wget -O /home/vagrant/misc_copy/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
 
 [ ! -d "/home/vagrant/vnc" ] && mkdir /home/vagrant/vnc
-cp /vagrant/.Provisioning/vnc/startnovnc.sh /home/vagrant/vnc
-cp /vagrant/.Provisioning/vnc/startnoi3.sh /home/vagrant/vnc
-cp /vagrant/.Provisioning/vnc/BurpFox.sh /home/vagrant/vnc
-cp /vagrant/.Provisioning/vnc/BurpSuiteVNC.sh /home/vagrant/vnc
-cp /vagrant/.Provisioning/vnc/FireFoxVNC.sh /home/vagrant/vnc
+cp -r /vagrant/.Provisioning/vnc/* /home/vagrant/vnc/
+#cp /vagrant/.Provisioning/vnc/startnovnc.sh /home/vagrant/vnc
+#cp /vagrant/.Provisioning/vnc/startnoi3.sh /home/vagrant/vnc
+#cp /vagrant/.Provisioning/vnc/BurpFox.sh /home/vagrant/vnc
+#cp /vagrant/.Provisioning/vnc/BurpSuiteVNC.sh /home/vagrant/vnc
+#cp /vagrant/.Provisioning/vnc/FireFoxVNC.sh /home/vagrant/vnc
+
+[ ! -d "/home/vagrant/.config" ] && mkdir /home/vagrant/.config
+[ -d "/home/vagrant/.config/i3" ] && rm -r /home/vagrant/.config/i3
+cp -r /vagrant/.Provisioning/.config/i3 /home/vagrant/.config/
+[ -d "/home/vagrant/.config/Thunar" ] && rm -r /home/vagrant/.config/Thunar
+cp -r /vagrant/.Provisioning/.config/Thunar /home/vagrant/.config/
+[ -d "/home/vagrant/.config/xfce4" ] && rm -r /home/vagrant/.config/xfce4
+cp -r /vagrant/.Provisioning/.config/xfce4 /home/vagrant/.config/
+[ -d "/home/vagrant/.config/user-dirs.dirs" ] && rm -r /home/vagrant/.config/user-dirs.dirs
+cp -r /vagrant/.Provisioning/.config/user-dirs.dirs /home/vagrant/.config/
+[ -d "/home/vagrant/.config/user-dirs.locale" ] && rm -r /home/vagrant/.config/user-dirs.locale
+cp -r /vagrant/.Provisioning/.config/user-dirs.locale /home/vagrant/.config/
