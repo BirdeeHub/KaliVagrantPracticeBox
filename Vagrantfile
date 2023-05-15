@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
   #config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
   #comment it out if it breaks stuff. It probably wont though.
 
-  #########--PORT-FORWARDING--#############
+  #########--DOCKER-VULNBOX-PORT-FORWARDING--#############
 
   #config.vm.network "forwarded_port", guest: 80, host: 10000, host_ip: "127.0.0.1", name: "DVWA"
   #config.vm.network "forwarded_port", guest: 3000, host: 3000, host_ip: "127.0.0.1", name: "beef1"
