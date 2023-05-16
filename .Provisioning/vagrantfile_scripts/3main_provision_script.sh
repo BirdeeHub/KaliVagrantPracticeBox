@@ -64,8 +64,8 @@ cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 echo Installing Minesweeper...
-[ ! -d "/usr/lib/minesweeper" ] && mkdir /usr/lib/minesweeper
-[ ! -f "/usr/lib/minesweeper/Minesweeper.jar" ] && cp /vagrant/.Provisioning/misc_copy/Minesweeper.jar /usr/lib/minesweeper/ 
+[ ! -d "/usr/lib/minesweeper" ] && mkdir /usr/lib/minesweeper && chmod 777 /usr/lib/minesweeper/
+[ ! -f "/usr/lib/minesweeper/Minesweeper.jar" ] && cp /vagrant/.Provisioning/misc_copy/Minesweeper.jar /usr/lib/minesweeper/
 echo "#\!/bin/bash" > /usr/bin/minesweeper && echo "setsid java -jar /usr/lib/minesweeper/Minesweeper.jar >/dev/null 2>&1 < /dev/null &" >> /usr/bin/minesweeper && chmod +x /usr/bin/minesweeper
 
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
