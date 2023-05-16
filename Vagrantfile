@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 22, host: 2202, host_ip: "127.0.0.1", id: "ssh"
   config.vm.network "forwarded_port", guest: 2205, host: 2203, host_ip: "127.0.0.1", id: "vnci3"
   config.vm.network "forwarded_port", guest: 2206, host: 2204, host_ip: "127.0.0.1", id: "vncxfce"
+  
   config.vm.provider 'virtualbox' do |v|
     v.gui = false
     #set RAM
