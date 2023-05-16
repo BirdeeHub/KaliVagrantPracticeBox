@@ -66,7 +66,7 @@ cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 echo Installing Minesweeper...
 [ ! -d "/usr/lib/minesweeper" ] && mkdir /usr/lib/minesweeper
 [ ! -f "/usr/lib/minesweeper/Minesweeper.jar" ] && cp /vagrant/.Provisioning/misc_copy/Minesweeper.jar /usr/lib/minesweeper/ 
-echo "#\!/bin/bash" > /usr/bin/minesweeper && echo "setsid java -jar /usr/lib/Minesweeper.jar >/dev/null 2>&1 < /dev/null &" >> /usr/bin/minesweeper && chmod +x /usr/bin/minesweeper
+echo "#\!/bin/bash" > /usr/bin/minesweeper && echo "setsid java -jar /usr/lib/minesweeper/Minesweeper.jar >/dev/null 2>&1 < /dev/null &" >> /usr/bin/minesweeper && chmod +x /usr/bin/minesweeper
 
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
 wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/download/v1.5.2/cdk_darwin_amd64
