@@ -4,18 +4,20 @@ Requirements: Vagrant and VirtualBox
 
 **ATTENTION**
 THIS BOX IS NOT ITSELF SECURE
+This box is for practicing ethical hacking skills on various different platforms. 
+I OWN NOTHING IN THIS REPOSITORY
+It is entirely a combination of various practice tools and software materials (all freely available) 
+that I have found and used. 
+My only contribution is writing a few batch files, 
+a vagrantfile with supporting scripts that provisions and installs everything, 
+and collecting everything in one place.
+
 this box is for practice purposes. the contained practice images 
 are not easily accessible from the outside internet as host communication 
 uses specific port forwarding over loopback interface, but if an entity
-is able to gain control of the box, with a shared folder and default password it 
-would be extremely easy to gain access to the host. Changing the password only slightly helps with this.
-Although it does help so you should definitely change the password.
-You would need to remove the vagrant provisioning key from authorized_keys, remove shared folders, 
-set up firewalls and/or antivirus solution, make sure nothing is running with SUID root that 
-doesnt need it, set password and lockout policies, make it so the provisioning scripts no longer run as root, 
-and much more. 
-The ssh key change in particular would break vagrant up provisioning unless i wanted to package this as its own box.
-You also would absolutely not want to expose DVWA to the general internet obviously.
+is able to gain control of the box, with a shared folder and default password and full permissions it 
+would be extremely easy to gain access to the host.
+You should definitely also change the password.
 
 You can put this repository wherever you want, but the relevant config files 
 for openvpn and .ssh and firefox must be in their default windows locations for 
@@ -36,7 +38,6 @@ They are all much easier to write in bash because you can actually
 set a variable to the output of a piped command without a loop.
 You will also need to change \\ to / in the vagranfile
 where it calls the provisioning scripts.
-**/ATTENTION**
 
 vm start in gui and headless done through the .bat files in .vm_ctl
 headless start batch file runs vagrant up (if not running) and ssh (over 127.0.0.1:2202) 
@@ -56,11 +57,6 @@ note: the different shellshock containers have the same port forward rule, but o
 VSCode_environment runs the batch files stored in the .Provisioning\setup_host_env\ folder, 
 which will copy your current ssh public key, and openvpn config files to the .Provisioning folder.
 it will also open VSCode for this repository, as well as the host file so that you can edit it easily while doing hack the box
-
-This box is for practicing ethical hacking skills on various different platforms. 
-I own nothing in this repository. 
-It is entirely a combination of various practice tools and materials that I have found and used.
-My only contribution is writing a few batch files, a vagrantfile that provisions everything, and collecting everything in one place.
 
 Git clone, click a batch file in .vm_ctl/ (or make a new tab in windows terminal that runs .vm_ctl/HeadlessKaliStart.bat from the correct starting directory)
 Then thats it! Once it provisions you will have everything you need to start practicing!
