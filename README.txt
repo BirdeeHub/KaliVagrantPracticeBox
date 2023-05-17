@@ -15,7 +15,8 @@ and collecting everything in one place.
 this box is for practice purposes. the contained practice images 
 are not easily accessible from the outside internet as host communication 
 uses specific port forwarding over loopback interface, but if an entity
-is able to gain control of the box, with a shared folder and default password and full permissions it 
+is able to gain control of the box while it is connected to the internet, 
+with a shared folder and default password and full permissions it 
 would be extremely easy to gain access to the host.
 You should definitely also change the password.
 
