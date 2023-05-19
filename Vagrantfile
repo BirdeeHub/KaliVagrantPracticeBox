@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     v.gui = false
     #set RAM
     v.memory = "4096"
-
+    v.cpus = 2
     #set name
     v.name = "birdeeKali"
     #old provider specific ssh rule here preserved for reference on how to pass commands to VBoxmanage.
