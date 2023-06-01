@@ -64,12 +64,15 @@ Then thats it! Once it provisions you will have everything you need to start pra
 
 This is more or less just a sandbox. Not refined, has ALL the things, rather than just what is needed.
 
-You should build it with vagrant up, then run apt update && upgrade and then restart the vm.
+You should build it with vagrant up 
+then run apt update && upgrade 
+then restart the vm.
 after that you should make sure the machine is running again, and navigate to the shared folder on the host machine
-run: vagrant package --output birdeeKali.box
-this will make a new box. Now when you mess it up, 
+this step will take a while but now run: vagrant package --output birdeeKali.box 
+then run: vagrant box add --name birdeeKali .\birdeeKali.box
+then name the current Vagrantfile "Vagrantfile-old" and move it to VFileBkp, 
+then move the Vagrantfile-new inside VFileBkp, outside of the directory, and rename it to Vagrantfile
+
+this will make a new box and use it. Now when you mess it up, 
 destroy and recreate is MUCH faster as you no longer have to wait for installs and downloads
 it just uncompresses the box and uses it.
-then run: vagrant box add --name birdeeKali .\birdeeKali.box
-then name the current Vagrantfile Vagrantfile-old, move it to VFileBkp, 
-and move the Vagrantfile-new inside, outside of the directory, and rename it to Vagrantfile
