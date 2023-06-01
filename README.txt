@@ -71,13 +71,8 @@ this will make a new box. Now when you mess it up,
 destroy and recreate is MUCH faster as you no longer have to wait for installs and downloads
 it just uncompresses the box and uses it.
 then run: vagrant box add --name birdeeKali .\birdeeKali.box
-then in the vagrantfile:
-this:
-  config.vm.box = "kalilinux/rolling"
-  #config.vm.box = "birdeeKali"
-becomes:
-  #config.vm.box = "kalilinux/rolling"
-  config.vm.box = "birdeeKali"
+then name the current vagrantfile vagrantfile-old, move it to VFileBkp, 
+and move the vagrantfile inside, outside of the directory
 
 afterwards, comment out all the provisioning script calls 
 except for, optionally, the always run script, and the new key script
