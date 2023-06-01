@@ -30,6 +30,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "kalilinux/rolling"
+  #config.vm.box = "birdeeKali"
   #set name in vagrant
   config.vm.define "birdeeKali"
   #define new port to prevent host collision with other vagrant vms
@@ -71,6 +72,7 @@ Vagrant.configure("2") do |config|
 
   #########--DOCKER-VULNBOX-PORT-FORWARDING--#############
 
+  #main forwards
   #config.vm.network "forwarded_port", guest: 10000, host: 10000, host_ip: "127.0.0.1", name: "DVWA"
   #config.vm.network "forwarded_port", guest: 3000, host: 3000, host_ip: "127.0.0.1", name: "beef1"
   #config.vm.network "forwarded_port", guest: 6789, host: 6789, host_ip: "127.0.0.1", name: "beef2"
@@ -89,4 +91,11 @@ Vagrant.configure("2") do |config|
   #config.vm.network "forwarded_port", guest: 10007, host: 10007, host_ip: "127.0.0.1", name: "shellshock11and21"
   #config.vm.network "forwarded_port", guest: 20007, host: 20007, host_ip: "127.0.0.1", name: "shellshock12"
   #config.vm.network "forwarded_port", guest: 10009, host: 10009, host_ip: "127.0.0.1", name: "heartbleed"
+
+  #wp forwards
+  #config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1", name: "wordpress:4.6.1-php5.6-apache"
+  #config.vm.network "forwarded_port", guest: 10000, host: 10000, host_ip: "127.0.0.1", name: "1_mysql:5.7"
+  #config.vm.network "forwarded_port", guest: 10001, host: 10001, host_ip: "127.0.0.1", name: "2_mysql:5.7"
+  #config.vm.network "forwarded_port", guest: 10002, host: 10002, host_ip: "127.0.0.1", name: "3_mysql:5.7"
+  #config.vm.network "forwarded_port", guest: 10003, host: 10003, host_ip: "127.0.0.1", name: "4_mysql:5.7"
 end

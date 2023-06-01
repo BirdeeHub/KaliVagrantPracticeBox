@@ -32,7 +32,8 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o 
 apt install -y docker-ce docker-ce-cli containerd.io
 apt install podman -y
 apt install docker-compose -y
-cp /vagrant/docker-compose.yml /home/vagrant
+[ ! -d "/home/vagrant/dockercompose" ] && mkdir /home/vagrant/dockercompose
+cp -r /vagrant/dockercompose/* /home/vagrant/dockercompose
 sudo usermod -aG docker vagrant
 
 echo

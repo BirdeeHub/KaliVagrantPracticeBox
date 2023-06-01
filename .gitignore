@@ -4,3 +4,4 @@ notes/*
 .Provisioning/firefox/*
 .vagrant/
 adapter_addresses.txt
+birdeeKali.box

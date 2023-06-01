@@ -63,3 +63,21 @@ Git clone, click a batch file in .vm_ctl/ (or make a new tab in windows terminal
 Then thats it! Once it provisions you will have everything you need to start practicing!
 
 This is more or less just a sandbox. Not refined, has ALL the things, rather than just what is needed.
+
+You should build it with vagrant up, then run apt update && upgrade and then restart the vm.
+after that you should make sure the machine is running again, and navigate to the shared folder on the host machine
+run: vagrant package --output birdeeKali.box
+this will make a new box. Now when you mess it up, 
+destroy and recreate is MUCH faster as you no longer have to wait for installs and downloads
+it just uncompresses the box and uses it.
+then run: vagrant box add --name birdeeKali .\birdeeKali.box
+then in the vagrantfile:
+this:
+  config.vm.box = "kalilinux/rolling"
+  #config.vm.box = "birdeeKali"
+becomes:
+  #config.vm.box = "kalilinux/rolling"
+  config.vm.box = "birdeeKali"
+
+afterwards, comment out all the provisioning script calls 
+except for, optionally, the always run script, and the new key script
