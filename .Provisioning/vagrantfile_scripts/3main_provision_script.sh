@@ -65,7 +65,14 @@ cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 echo Installing Minesweeper...
-/vagrant/.Provisioning/misc_copy/installdebianpackage.sh
+wget -O minesweeper_linux_dist.zip https://github.com/BirdeeHub/minesweeper/raw/main/linux_or_mac_pkg/linux_dist.zip && \
+unzip minesweeper_linux_dist.zip -d minesweeper_linux_dist && \
+sudo ./minesweeper_linux_dist/installdebianpackage.sh && \
+mv ./minesweeper_linux_dist/uninstalldebianpackage.sh ./minesweeper_linux_dist/minesweeper_uninstall.sh && \
+[ ! -d /home/vagrant/.minesweeper/ ] && mkdir /home/vagrant/.minesweeper; \
+mv ./minesweeper_linux_dist/minesweeper_uninstall.sh /home/vagrant/.minesweeper && \
+rm -r ./minesweeper_linux_dist/ ./minesweeper_linux_dist.zip
+
 
 wget -O /home/vagrant/misc_copy/deepce.sh https://github.com/stealthcopter/deepce/raw/main/deepce.sh
 wget -O /home/vagrant/misc_copy/cdk https://github.com/cdk-team/CDK/releases/download/v1.5.2/cdk_darwin_amd64
