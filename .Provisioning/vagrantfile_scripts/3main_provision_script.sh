@@ -65,12 +65,12 @@ cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 echo Installing Minesweeper...
-wget -O minesweeper_linux_dist.zip https://github.com/BirdeeHub/minesweeper/raw/main/linux_or_mac_pkg/linux_dist.zip && \
+wget -O minesweeper_linux_dist.zip https://github.com/BirdeeHub/minesweeper/raw/con_iconos/minesweeper_linux_dist.zip && \
 unzip minesweeper_linux_dist.zip -d minesweeper_linux_dist && \
-sudo ./minesweeper_linux_dist/installdebianpackage.sh && \
-mv ./minesweeper_linux_dist/uninstalldebianpackage.sh ./minesweeper_linux_dist/minesweeper_uninstall.sh && \
-[ ! -d /home/vagrant/.minesweeper/ ] && mkdir /home/vagrant/.minesweeper; \
-mv ./minesweeper_linux_dist/minesweeper_uninstall.sh /home/vagrant/.minesweeper && \
+sudo ./minesweeper_linux_dist/installLinuxMinesweeper.sh && \
+[ ! -d ~/.minesweeper/ ] && mkdir ~/.minesweeper;
+mv ./minesweeper_linux_dist/installLinuxMinesweeper.sh ~/.minesweeper/ && \
+mv ./minesweeper_linux_dist/uninstallLinuxMinesweeper.sh ~/.minesweeper/ && \
 rm -r ./minesweeper_linux_dist/ ./minesweeper_linux_dist.zip
 
 
