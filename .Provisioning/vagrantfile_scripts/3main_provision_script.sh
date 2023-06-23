@@ -65,7 +65,7 @@ cp /usr/share/wordlists/rockyou.txt /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/intrigue_docker.sh /home/vagrant/misc_copy/
 cp /vagrant/.Provisioning/misc_copy/copy_firefox.sh /home/vagrant/misc_copy/
 echo Installing Minesweeper...
-wget -O minesweeper_linux_dist.zip https://github.com/BirdeeHub/minesweeper/raw/con_iconos/minesweeper_linux_dist.zip && \
+wget -O minesweeper_linux_dist.zip https://github.com/BirdeeHub/minesweeper/raw/main/minesweeper_linux_dist.zip && \
 unzip minesweeper_linux_dist.zip -d minesweeper_linux_dist && \
 sudo ./minesweeper_linux_dist/installLinuxMinesweeper.sh && \
 [ ! -d ~/.minesweeper/ ] && mkdir ~/.minesweeper;
