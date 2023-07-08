@@ -29,8 +29,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "kalilinux/rolling"
-  #config.vm.box = "birdeeKali"
+  #config.vm.box = "kalilinux/rolling"
+  config.vm.box = "birdeeKali"
   #set name in vagrant
   config.vm.define "birdeeKali"
   #define new port to prevent host collision with other vagrant vms
@@ -52,19 +52,19 @@ Vagrant.configure("2") do |config|
   end
   
   #run the provisioning scripts
-  config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\1new_ssh_key_script.sh"
+  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\1new_ssh_key_script.sh"
   config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\2always_run_script.sh", run: "always"
-  config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\3main_provision_script.sh"
+  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\3main_provision_script.sh"
   
   #config.vm.provision "shell", inline: $aptupgrade #running upgrade before github pulls can help with  
   #install scripts that check dependency version. But it takes a long time so i separated it for easy comment-out.
   #it also can make it bug sometimes. Its usually best to leave it disabled.
 
-  config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\5github_script.sh"
+  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\5github_script.sh"
   
-  config.vm.provision "shell", inline: $fix_folder_ownership
+  #config.vm.provision "shell", inline: $fix_folder_ownership
   
-  config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\7alias_script.sh"
+  #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\7alias_script.sh"
   #config.vm.provision "shell", path: ".Provisioning\\vagrantfile_scripts\\8testing_script.sh" #this one still prompts you. hit enter. it sucks i know.
   
   #config.vm.provision "shell", inline: $autoclean #separated out to easily make sure it runs last when adding more stuff.
