@@ -4,7 +4,7 @@ echo Running Provisioning Script...
 apt update
 apt install -y kali-linux-large
 apt install tree wget snapd steghide foremost binwalk remmina python3-pip cupp gobuster awscli tldr openjdk-11-jre maven -y;
-apt install nuclei --fix-missing
+apt install nuclei --fix-missing -y
 apt install -y novnc tigervnc* kali-desktop-i3 xfce4-terminal
 
 echo
