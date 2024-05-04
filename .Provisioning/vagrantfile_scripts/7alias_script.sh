@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo
 echo Adding Aliases to .zshrc file...
 echo "alias gobuckets='gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u \$1'" >> /home/vagrant/.zshrc

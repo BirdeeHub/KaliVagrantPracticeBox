@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo
 echo Creating SSH Keys...
 runuser -l vagrant -c 'ssh-keygen -f /home/vagrant/.ssh/id_rsa -t rsa -N ""'

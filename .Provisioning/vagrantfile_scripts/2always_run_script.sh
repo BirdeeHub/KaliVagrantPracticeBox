@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo
 echo Saving Adapter Addresses...
 /sbin/ifconfig | grep -F -e 'flags=' -e 'inet ' -e 'inet6 ' -e 'ether '| awk '{ print $1 " " $2 }' | sed s/inet6/""/ | sed s/inet/""/ | sed s/ether/""/ | sed s/flags=.*/""/ > /vagrant/adapter_addresses.txt

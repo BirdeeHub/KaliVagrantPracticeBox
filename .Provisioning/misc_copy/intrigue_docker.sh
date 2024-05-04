@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ##### The following command will pull and run the latest stable image. 
 ### Remove the -v option if you do not need to preserve your projects between runs
 ##
